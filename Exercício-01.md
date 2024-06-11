@@ -1,4 +1,4 @@
-Baixe este arquivo no seu computador, abra no Visual Studio, leia as questões e marque a alternativa correta com um X entre os [ ] ===> [X]
+Baixe este arquivo no seu computador, abra no Visual Studio, leia as questões e marque a alternativa correta com um X entre os [ ] ===> [X].
 Faça upload desse arquivo no seu diretório no Github e envie o link para o meu email ledsouza@senacrs.com.br, com o assunto Exercício 1 + seu nome completo + turma.
 ---
 
