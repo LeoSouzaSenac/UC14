@@ -60,14 +60,8 @@ Faça upload desse arquivo no seu diretório no Github e envie o link para o meu
 - [ ] a linguagem HTML, o protocolo HTTP e o nome WWW
 - [ ] o nome WWW, o primeiro navegador Mosaic e a linguagem HTML
 
-### 9. O primeiro backbone brasileiro surgiu em _____ para acesso acadêmico, mas só foi liberado para empresas em _____.
 
-- [ ] 1991 / 1995
-- [ ] 1990 / 1997
-- [ ] 1989 / 1991
-- [ ] 1985 / 1995
-
-### 10. Atualmente, a Internet Brasileira atinge quantos estados?
+### 9. Atualmente, a Internet Brasileira atinge quantos estados?
 
 - [ ] 19 estados, além do Distrito Federal
 - [ ] 23 estados, além do Distrito Federal
