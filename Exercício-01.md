@@ -128,7 +128,7 @@ Faça upload desse arquivo no seu diretório no Github e envie o link para o meu
 - [ ] mensal / diário
 - [ ] anual / mensal
 
-### 9. Os domínios possuem seus Top Level Domains. Vejamos como exemplo os domínios estudonauta.com.br e cursoemvideo.com. No primeiro caso, temos um _____ e no segundo caso, temos um _____.
+### 9. Os domínios possuem seus Top Level Domains. Vejamos como exemplo os domínios meusite.com.br e outrosite.com. No primeiro caso, temos um _____ e no segundo caso, temos um _____.
 
 - [ ] GTLD / ccTLD
 - [ ] ccTLD / GTLD
