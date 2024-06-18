@@ -11,7 +11,7 @@ Cada um deve explorar a fundo seu tema, entendendo sua função, importância e 
 
 ## Temas para Pesquisa
 
-### DNS (Domain Name System)
+### DNS (Domain Name System) - Bruno
 - **Conceito:** O que é DNS e sua função na internet.
 - **Funcionamento:** Como a resolução de nomes de domínio para endereços IP ocorre.
 - **Componentes:** Servidores DNS, registros DNS (A, AAAA, CNAME, MX, etc.).
