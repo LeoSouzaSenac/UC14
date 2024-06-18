@@ -25,21 +25,21 @@ Cada um deve explorar a fundo seu tema, entendendo sua função, importância e 
 - **Segurança:** Importância do HTTPS, certificados SSL/TLS.
 - **Exemplos Práticos:** Análise de requisições HTTP usando ferramentas como Postman.
 
-### Navegadores Web
+### Navegadores Web - Arthur
 - **Conceito:** O que são navegadores web e sua função.
 - **Funcionamento:** Como os navegadores processam e renderizam páginas web.
 - **Componentes:** Motor de renderização (por exemplo, Blink, Gecko), motor JavaScript (V8, SpiderMonkey).
 - **Importância:** Diferentes navegadores e suas características.
 - **Exemplos Práticos:** Comparação de desempenho entre diferentes navegadores.
 
-### Servidores Web
+### Servidores Web - Tymotheo
 - **Conceito:** O que são servidores web e sua função.
 - **Funcionamento:** Como os servidores web processam requisições e servem conteúdos.
 - **Componentes:** Exemplos de servidores web (Apache, Nginx, IIS).
 - **Importância:** Configuração e gerenciamento de servidores web.
 - **Exemplos Práticos:** Configuração básica de um servidor web local usando XAMPP ou outro software.
 
-### Protocolos de Comunicação
+### Protocolos de Comunicação - Ryan
 - **Conceito:** O que são protocolos de comunicação e sua função na internet.
 - **Principais Protocolos:** TCP/IP, UDP, FTP, SMTP.
 - **Funcionamento:** Como os dados são transmitidos e recebidos na rede.
@@ -54,14 +54,14 @@ Cada um deve explorar a fundo seu tema, entendendo sua função, importância e 
 - **Importância:** Como essas linguagens trabalham juntas para criar páginas web ricas e interativas.
 - **Exemplos Práticos:** Criação de uma página web simples com HTML, CSS e JavaScript.
 
-### Banco de Dados na Web
+### Banco de Dados na Web - Guilherme
 - **Conceito:** O que são bancos de dados e sua função nas aplicações web.
 - **Tipos de Bancos de Dados:** Relacionais (MySQL, PostgreSQL) e NoSQL (MongoDB).
 - **Funcionamento:** Como os dados são armazenados, consultados e gerenciados.
 - **Importância:** Papel dos bancos de dados na persistência de dados de aplicações web.
 - **Exemplos Práticos:** Criação de um banco de dados simples e realização de operações básicas (CRUD).
 
-### Segurança na Web
+### Segurança na Web - Kainnâ
 - **Conceito:** Importância da segurança na web.
 - **Ameaças Comuns:** SQL Injection, Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF).
 - **Boas Práticas:** Uso de HTTPS, autenticação segura, sanitização de entradas.
