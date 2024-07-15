@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres do documento -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Define a viewport para responsividade -->
+    <title>User Profile</title> <!-- Título da página -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet"> <!-- Inclui o Tailwind CSS para estilização -->
+</head>
+<body class="bg-gray-100 flex justify-center items-center h-screen"> <!-- Corpo da página com classes Tailwind para estilo -->
+    <div class="w-full max-w-md"> <!-- Container principal com largura máxima -->
+        <div id="updateContainer" class="bg-white p-6 rounded-lg shadow-lg"> <!-- Container do formulário de atualização -->
+            <h2 class="text-2xl font-bold mb-4">Update User</h2> <!-- Título do formulário de atualização -->
+            <form id="updateForm"> <!-- Formulário de atualização -->
+                <div class="mb-4">
+                    <label class="block text-gray-700">Username</label> <!-- Rótulo do campo de nome de usuário -->
+                    <input type="text" id="updateUsername" class="w-full px-3 py-2 border rounded-lg" readonly> <!-- Campo de nome de usuário (somente leitura) -->
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Password</label> <!-- Rótulo do campo de senha -->
+                    <input type="password" id="updatePassword" class="w-full px-3 py-2 border rounded-lg"> <!-- Campo de senha -->
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Email</label> <!-- Rótulo do campo de email -->
+                    <input type="email" id="updateEmail" class="w-full px-3 py-2 border rounded-lg"> <!-- Campo de email -->
+                </div>
+                <button type="submit" class="w-full bg-yellow-500 text-white py-2 rounded-lg">Update</button> <!-- Botão de atualização -->
+            </form>
+            <div id="updateResponse" class="mt-4"></div> <!-- Div para exibir a resposta da atualização -->
+        </div>
+
+        <div id="userInfoContainer" class="bg-white p-6 rounded-lg shadow-lg mt-4"> <!-- Container de informações do usuário -->
+            <h2 class="text-2xl font-bold mb-4">User Information</h2> <!-- Título da seção de informações do usuário -->
+            <div class="mb-4">
+                <label class="block text-gray-700">Username: </label> <!-- Rótulo do nome de usuário -->
+                <span id="userInfoUsername" class="text-gray-700"></span> <!-- Campo do nome de usuário -->
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Email: </label> <!-- Rótulo do email -->
+                <span id="userInfoEmail" class="text-gray-700"></span> <!-- Campo do email -->
+            </div>
+            <button id="deleteUser" class="w-full bg-red-500 text-white py-2 rounded-lg">Delete Account</button> <!-- Botão para deletar a conta -->
+        </div>
+    </div>
+
+    <script>
+        // Preenche os campos do formulário com os dados do usuário armazenados na sessão
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = sessionStorage.getItem('username');
+            const email = sessionStorage.getItem('email');
+
+            document.getElementById('updateUsername').value = username;
+            document.getElementById('updateEmail').value = email;
+
+            document.getElementById('userInfoUsername').innerText = username;
+            document.getElementById('userInfoEmail').innerText = email;
+        });
+
+        // Submissão do formulário de atualização
+        document.getElementById('updateForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Previne o comportamento padrão do formulário
+            const username = document.getElementById('updateUsername').value;
+            const password = document.getElementById('updatePassword').value;
+            const email = document.getElementById('updateEmail').value;
+
+            // Envia os dados de atualização para o servidor
+            const response = await fetch('server.php?action=update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password, email })
+            });
+
+            const result = await response.json(); // Converte a resposta em JSON
+            document.getElementById('updateResponse').innerText = result.message; // Exibe a mensagem de resposta
+            if (result.success) {
+                sessionStorage.setItem('email', email); // Atualiza o email armazenado na sessão
+                document.getElementById('userInfoEmail').innerText = email; // Atualiza o email exibido
+            }
+        });
+
+        // Deletar a conta do usuário
+        document.getElementById('deleteUser').addEventListener('click', async function() {
+            const username = sessionStorage.getItem('username');
+
+            // Envia a solicitação de deleção para o servidor
+            const response = await fetch('server.php?action=delete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username })
+            });
+
+            const result = await response.json(); // Converte a resposta em JSON
+            alert(result.message); // Exibe a mensagem de resposta
+            if (result.success) {
+                sessionStorage.clear(); // Limpa os dados armazenados na sessão
+                window.location.href = 'index.html'; // Redireciona para a página de login
+            }
+        });
+    </script>
+</body>
+</html>
