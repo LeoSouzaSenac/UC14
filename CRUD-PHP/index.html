@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Login & Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet"> 
+</head>
+<body class="bg-gray-100 flex justify-center items-center h-screen"> 
+    <div class="w-full max-w-md"> 
+        <div id="loginContainer" class="bg-white p-6 rounded-lg shadow-lg"> 
+            <h2 class="text-2xl font-bold mb-4">Login</h2> 
+            <form id="loginForm"> <!-- Formulário de login -->
+                <div class="mb-4">
+                    <label class="block text-gray-700">Username</label> <!-- Rótulo do campo de nome de usuário -->
+                    <input type="text" id="loginUsername" class="w-full px-3 py-2 border rounded-lg" required> <!-- Campo de nome de usuário -->
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Password</label> <!-- Rótulo do campo de senha -->
+                    <input type="password" id="loginPassword" class="w-full px-3 py-2 border rounded-lg" required> <!-- Campo de senha -->
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg">Login</button> <!-- Botão de login -->
+            </form>
+            <div id="loginResponse" class="mt-4"></div> <!-- Div para exibir a resposta do login -->
+            <button id="showRegister" class="w-full bg-gray-500 text-white py-2 rounded-lg mt-4">Register</button> <!-- Botão para mostrar o formulário de registro -->
+        </div>
+
+        <!-- Formulário de Registro -->
+        <div id="registerContainer" class="bg-white p-6 rounded-lg shadow-lg hidden"> <!-- Container do formulário de registro, inicialmente oculto -->
+            <h2 class="text-2xl font-bold mb-4">Register</h2> <!-- Título do formulário de registro -->
+            <form id="registerForm"> <!-- Formulário de registro -->
+                <div class="mb-4">
+                    <label class="block text-gray-700">Username</label> <!-- Rótulo do campo de nome de usuário -->
+                    <input type="text" id="registerUsername" class="w-full px-3 py-2 border rounded-lg" required> <!-- Campo de nome de usuário -->
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Password</label> <!-- Rótulo do campo de senha -->
+                    <input type="password" id="registerPassword" class="w-full px-3 py-2 border rounded-lg" required> <!-- Campo de senha -->
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Email</label> <!-- Rótulo do campo de email -->
+                    <input type="email" id="registerEmail" class="w-full px-3 py-2 border rounded-lg"> <!-- Campo de email -->
+                </div>
+                <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg">Register</button> <!-- Botão de registro -->
+            </form>
+            <div id="registerResponse" class="mt-4"></div> <!-- Div para exibir a resposta do registro -->
+            <button id="showLogin" class="w-full bg-gray-500 text-white py-2 rounded-lg mt-4">Back to Login</button> <!-- Botão para voltar ao formulário de login -->
+        </div>
+    </div>
+
+    <script>
+        // Alterna entre os formulários de login e registro
+        document.getElementById('showRegister').addEventListener('click', function() {
+            document.getElementById('loginContainer').classList.add('hidden');
+            document.getElementById('registerContainer').classList.remove('hidden');
+        });
+
+        document.getElementById('showLogin').addEventListener('click', function() {
+            document.getElementById('registerContainer').classList.add('hidden');
+            document.getElementById('loginContainer').classList.remove('hidden');
+        });
+
+        // Submissão do formulário de login
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Previne o comportamento padrão do formulário
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Envia os dados do login para o servidor
+            const response = await fetch('server.php?action=login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            const result = await response.json(); // Converte a resposta em JSON
+            document.getElementById('loginResponse').innerText = result.message; // Exibe a mensagem de resposta
+            if (result.success) {
+                sessionStorage.setItem('username', username); // Armazena o nome de usuário na sessão
+                sessionStorage.setItem('email', result.email); // Armazena o email na sessão
+                window.location.href = 'profile.html'; // Redireciona para a página de perfil
+            }
+        });
+
+        // Submissão do formulário de registro
+        document.getElementById('registerForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Previne o comportamento padrão do formulário
+            const username = document.getElementById('registerUsername').value;
+            const password = document.getElementById('registerPassword').value;
+            const email = document.getElementById('registerEmail').value;
+
+            // Envia os dados de registro para o servidor
+            const response = await fetch('server.php?action=register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password, email })
+            });
+
+            const result = await response.json(); // Converte a resposta em JSON
+            document.getElementById('registerResponse').innerText = result.message; // Exibe a mensagem de resposta
+            if (result.success) {
+                document.getElementById('showLogin').click(); // Volta para o formulário de login
+            }
+        });
+    </script>
+</body>
+</html>
