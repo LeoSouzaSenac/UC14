@@ -1,6 +1,3 @@
-Claro! Aqui está o passo a passo em formato Markdown (.md):
-
-
 # Criando e Testando uma API Simples com Node.js e XAMPP
 
 ## Configuração do Banco de Dados com XAMPP
