@@ -196,43 +196,7 @@ node server.js
 - No campo de URL, digite `http://localhost:3000/usuarios/1` (substitua `1` pelo ID do usuário que deseja deletar).
 - Clique no botão `Send`.
 
-### Usando curl
 
-#### 1. Adicionar um Usuário (POST)
-- Abra o terminal ou prompt de comando.
-- Execute o seguinte comando:
-
-```bash
-curl -X POST http://localhost:3000/usuarios -H "Content-Type: application/json" -d '{"nome":"João","email":"joao@exemplo.com","senha":"senha123"}'
-```
-
-#### 2. Obter Todos os Usuários (GET)
-- Execute o seguinte comando:
-
-```bash
-curl http://localhost:3000/usuarios
-```
-
-#### 3. Obter um Usuário por ID (GET)
-- Execute o seguinte comando (substitua `1` pelo ID do usuário que deseja buscar):
-
-```bash
-curl http://localhost:3000/usuarios/1
-```
-
-#### 4. Atualizar um Usuário (PUT)
-- Execute o seguinte comando (substitua `1` pelo ID do usuário que deseja atualizar):
-
-```bash
-curl -X PUT http://localhost:3000/usuarios/1 -H "Content-Type: application/json" -d '{"nome":"João Atualizado","email":"joao.atualizado@exemplo.com","senha":"novaSenha123"}'
-```
-
-#### 5. Deletar um Usuário (DELETE)
-- Execute o seguinte comando (substitua `1` pelo ID do usuário que deseja deletar):
-
-```bash
-curl -X DELETE http://localhost:3000/usuarios/1
-```
 
 ### Conclusão
 Esses métodos permitirão que você teste a API que configurou. Usar Postman é muito útil para visualizar as respostas e fazer testes de forma mais interativa, enquanto `curl` é uma ferramenta poderosa para fazer requisições HTTP diretamente do terminal.
